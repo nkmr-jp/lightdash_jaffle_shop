@@ -7,12 +7,24 @@ models:
           - unique
           - not_null
         description: ""
+        meta:
+          dimension:
+            type: number
       - name: first_name
         description: ""
+        meta:
+          dimension:
+            type: string
       - name: last_name
         description: ""
+        meta:
+          dimension:
+            type: string
       - name: created
         description: ""
+        meta:
+          dimension:
+            type: timestamp
   - name: stg_orders
     columns:
       - name: order_id
@@ -20,6 +32,9 @@ models:
           - unique
           - not_null
         description: ""
+        meta:
+          dimension:
+            type: number
       - name: status
         data_tests:
           - accepted_values:
@@ -30,10 +45,19 @@ models:
                 - return_pending
                 - returned
         description: ""
+        meta:
+          dimension:
+            type: string
       - name: customer_id
         description: ""
+        meta:
+          dimension:
+            type: number
       - name: order_date
         description: ""
+        meta:
+          dimension:
+            type: date
   - name: stg_payments
     columns:
       - name: payment_id
@@ -41,6 +65,9 @@ models:
           - unique
           - not_null
         description: ""
+        meta:
+          dimension:
+            type: number
       - name: payment_method
         data_tests:
           - accepted_values:
@@ -50,7 +77,16 @@ models:
                 - bank_transfer
                 - gift_card
         description: ""
+        meta:
+          dimension:
+            type: string
       - name: order_id
         description: ""
+        meta:
+          dimension:
+            type: number
       - name: amount
         description: ""
+        meta:
+          dimension:
+            type: number

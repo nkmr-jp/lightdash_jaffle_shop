@@ -44,13 +44,15 @@ models:
             type: date
             urls:
               - label: Open in Google Calendar
-                url: 'https://calendar.google.com/calendar/u/0/r/day/${ value.formatted |split: "-" |join: "/"}'
+                url: >-
+                  https://calendar.google.com/calendar/u/0/r/day/${
+                  value.formatted |split: "-" |join: "/"}
       - name: event
         description: ""
         meta:
           dimension:
             type: string
-            group_label: 'Events'
+            group_label: Events
           metrics:
             count:
               type: count
@@ -59,43 +61,43 @@ models:
         meta:
           dimension:
             type: number
-            group_label: 'Events'
+            group_label: Events
           metrics:
             in_gbp:
               type: sum
-              format: 'gbp'
+              format: gbp
             in_eur:
               type: sum
-              format: 'eur'
+              format: eur
             in_eur_with_round_2:
               type: sum
-              format: 'eur'
+              format: eur
               round: 2
             in_eur_with_round_0:
               type: sum
-              format: 'eur'
+              format: eur
               round: 0
             with_round_2:
               type: sum
               round: 2
             in_thousands_of_eur:
               type: sum
-              format: 'eur'
+              format: eur
               compact: thousands
             in_thousands_of_eur_with_round_0:
               type: sum
-              format: 'eur'
+              format: eur
               round: 0
               compact: thousands
             in_mi:
               type: sum
-              format: 'mi'
+              format: mi
             in_km:
               type: sum
-              format: 'km'
+              format: km
             in_percent:
               type: sum
-              format: 'percent'
+              format: percent
             in_thousands:
               type: sum
               compact: thousands
@@ -117,5 +119,5 @@ models:
             percentile_75:
               type: percentile
               percentile: 75
-            median: 
+            median:
               type: median

@@ -1,14 +1,26 @@
 version: 2
 models:
   - name: users
-    meta: 
-      sql_filter: 'customer_id = ${ld.attr.customer_id}'
+    meta:
+      sql_filter: customer_id = ${ld.attr.customer_id}
     columns:
       - name: customer_id
         description: This is a unique identifier for a customer
+        meta:
+          dimension:
+            type: number
       - name: first_name
         description: Customer's first name. PII.
+        meta:
+          dimension:
+            type: string
       - name: last_name
         description: Customer's last name. PII.
+        meta:
+          dimension:
+            type: string
       - name: created
         description: Timestamp (UTC) when customer was created
+        meta:
+          dimension:
+            type: timestamp

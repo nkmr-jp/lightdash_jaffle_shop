@@ -10,20 +10,30 @@ models:
         data_tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: number
       - name: first_name
         description: Customer's first name. PII.
         meta:
           dimension:
             type: string
             urls:
-              - label: "URL from value"
-                url: "https://example.com/company/${value.formatted | url_encode }"
-              - label: "URL from row value"
-                url: "https://example.com/company/${row.customers.customer_id.raw | url_encode }"
-              - label: "Invalid URL with bad reference"
-                url: "https://example.com/company/${row.customer_id.raw | url_encode }"
+              - label: URL from value
+                url: https://example.com/company/${value.formatted | url_encode }
+              - label: URL from row value
+                url: >-
+                  https://example.com/company/${row.customers.customer_id.raw |
+                  url_encode }
+              - label: Invalid URL with bad reference
+                url: >-
+                  https://example.com/company/${row.customer_id.raw | url_encode
+                  }
       - name: last_name
         description: Customer's last name. PII.
+        meta:
+          dimension:
+            type: string
       - name: created
         description: Timestamp (UTC) when customer was created
         meta:
@@ -32,21 +42,26 @@ models:
               type: min
             date_of_most_recent_created_customer:
               type: max
+          dimension:
+            type: timestamp
       - name: first_order
         description: Date of the customers first order
         meta:
           dimension:
             hidden: true
+            type: date
       - name: most_recent_order
         description: Date of the customers most recent order
         meta:
           dimension:
             hidden: true
+            type: date
       - name: days_since_last_order
         description: Number of days since the customers last order
         meta:
           dimension:
             hidden: true
+            type: number
       - name: days_between_created_and_first_order
         description: >-
           Number of days between the customer being created and making their
@@ -54,16 +69,19 @@ models:
         meta:
           dimension:
             hidden: true
+            type: number
       - name: number_of_orders
         description: ""
         meta:
           dimension:
             hidden: true
+            type: number
       - name: customer_lifetime_value
         description: ""
         meta:
           dimension:
             hidden: true
+            type: number
   - name: orders
     description: >-
       This table has basic information about orders, as well as some derived
@@ -82,6 +100,8 @@ models:
           metrics:
             unique_order_count:
               type: count_distinct
+          dimension:
+            type: number
       - name: is_completed
         description: Boolean indicating if status is completed
         meta:
@@ -94,6 +114,8 @@ models:
               show_underlying_values:
                 - amount
                 - customers.first_name
+          dimension:
+            type: boolean
       - name: customer_id
         description: Foreign key to the customers table
         data_tests:
@@ -101,6 +123,9 @@ models:
           - relationships:
               to: ref('customers')
               field: customer_id
+        meta:
+          dimension:
+            type: number
       - name: order_date
         description: Date (UTC) that the order was placed
         meta:
@@ -109,6 +134,8 @@ models:
               type: min
             date_of_most_recent_order:
               type: max
+          dimension:
+            type: date
       - name: status
         description: "{{ doc(\"orders_status\") }}"
         data_tests:
@@ -119,6 +146,9 @@ models:
                 - completed
                 - return_pending
                 - returned
+        meta:
+          dimension:
+            type: string
       - name: amount
         description: Total amount (USD) of the order
         data_tests:
@@ -146,6 +176,7 @@ models:
               sql: ${total_order_amount}-${total_completed_order_amount}
           dimension:
             hidden: true
+            type: number
       - name: credit_card_amount
         description: Amount of the order (AUD) paid for by credit card
         data_tests:
@@ -153,6 +184,7 @@ models:
         meta:
           dimension:
             hidden: true
+            type: number
       - name: coupon_amount
         description: Amount of the order (AUD) paid for by coupon
         data_tests:
@@ -160,6 +192,7 @@ models:
         meta:
           dimension:
             hidden: true
+            type: number
       - name: bank_transfer_amount
         description: Amount of the order (AUD) paid for by bank transfer
         data_tests:
@@ -167,6 +200,7 @@ models:
         meta:
           dimension:
             hidden: true
+            type: number
       - name: gift_card_amount
         description: Amount of the order (AUD) paid for by gift card
         data_tests:
@@ -174,6 +208,7 @@ models:
         meta:
           dimension:
             hidden: true
+            type: number
   - name: payments
     description: This table has information about individual payments
     meta:
@@ -190,10 +225,18 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+          dimension:
+            type: number
       - name: order_id
         description: Foreign key to the orders table
+        meta:
+          dimension:
+            type: number
       - name: payment_method
         description: Method of payment used, for example credit card
+        meta:
+          dimension:
+            type: string
       - name: amount
         description: Total amount (AUD) of the individual payment
         meta:
@@ -201,3 +244,5 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+          dimension:
+            type: number
