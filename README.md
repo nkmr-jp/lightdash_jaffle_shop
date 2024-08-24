@@ -36,7 +36,7 @@ dbt docs serve
 
 ## lightdashをRenderにdeploy
 
-[Render](https://render.com) に簡単にデプロイできます。無料で試せます。
+[Render](https://render.com) のアカウントを作成してログイン。以下のボタンをクリックしてデプロイ。
 
 <div>
 <a href="https://render.com/deploy?repo=https://github.com/lightdash/lightdash-deploy-render">
@@ -44,6 +44,7 @@ dbt docs serve
 </a>
 
 See: https://github.com/lightdash/lightdash
+
 
 ## lightdashにデプロイ
 
@@ -58,16 +59,17 @@ See: https://docs.lightdash.com/get-started/setup-lightdash/get-project-lightdas
 
 ## サービスアカウントキーをlightdashに登録
 
-以下の権限でサービスアカウントを作成。
+以下の権限でサービスアカウントを作成。サービスアカウントキーを作成してlightdashに登録。
+
 ```shell
 roles/bigquery.dataViewer
 oles/bigquery.jobUser
 ```
 
-サービスアカウントキーを作成してlightdashに登録します。
-
 See: https://docs.lightdash.com/get-started/setup-lightdash/connect-project#bigquery
 
+## ligthdashでクエリ実行
+![image](https://github.com/user-attachments/assets/825e9fe1-6bf6-4b64-bc7f-7a7c205f489c)
 
 
 
