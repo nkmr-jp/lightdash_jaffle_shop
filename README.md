@@ -69,8 +69,7 @@ roles/bigquery.jobUser
 See: https://docs.lightdash.com/get-started/setup-lightdash/connect-project#bigquery
 
 ## ligthdashでクエリ実行
-![image](https://github.com/user-attachments/assets/825e9fe1-6bf6-4b64-bc7f-7a7c205f489c)
-
+<img width="2056" alt="image" src="https://github.com/user-attachments/assets/ae128368-efed-4ac7-80a9-33aa5d6c1abe">
 
 
 ## How to use this project in Lightdash 
