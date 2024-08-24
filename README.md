@@ -63,7 +63,7 @@ See: https://docs.lightdash.com/get-started/setup-lightdash/get-project-lightdas
 
 ```shell
 roles/bigquery.dataViewer
-oles/bigquery.jobUser
+roles/bigquery.jobUser
 ```
 
 See: https://docs.lightdash.com/get-started/setup-lightdash/connect-project#bigquery
