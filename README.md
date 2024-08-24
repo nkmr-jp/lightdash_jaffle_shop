@@ -33,6 +33,8 @@ dbt run
 dbt docs generate
 dbt docs serve
 ```
+<img width="2033" alt="image" src="https://github.com/user-attachments/assets/74fa37ac-ab40-4c10-8a47-9a081a1350de">
+
 
 ## lightdashをRenderにdeploy
 
