@@ -1,3 +1,76 @@
+# dbt-coreとBigQueryで実行する手順
+
+gcloud auth でのログイン。 (CloudSDKのインストールがまだの場合は [こちら](https://cloud.google.com/sdk/docs/install-sdk?hl=ja) を参考に設定。)
+```sh
+gcloud auth login
+gcloud auth application-default login
+```
+
+## 各種インストール
+```sh
+python -m venv .venv
+source .venv/bin/activate.fish
+pip install -r requirements.txt
+pip install dbt-bigquery
+```
+
+## テンプレートからプロファイルをコピー
+```sh
+cp profiles_template.yml profiles.yml
+```
+
+## profiles.yml を編集
+`<your-project-id>`に自分のGoogleCloudのプロジェクトIDを書く。
+```yml
+project: <your-project-id>
+```
+
+## dbtのコマンド実行
+```sh
+dbt deps
+dbt seed
+dbt run
+dbt docs generate
+dbt docs serve
+```
+
+## lightdashをRenderにdeploy
+
+[Render](https://render.com) に簡単にデプロイできます。無料で試せます。
+
+<div>
+<a href="https://render.com/deploy?repo=https://github.com/lightdash/lightdash-deploy-render">
+  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a>
+
+See: https://github.com/lightdash/lightdash
+
+## lightdashにデプロイ
+
+```shell
+npm install -g @lightdash/cli
+lightdash login https://{{ lightdash_domain }} --token my-super-secret-token
+lightdash dbt run
+lightdash deploy --create
+```
+
+See: https://docs.lightdash.com/get-started/setup-lightdash/get-project-lightdash-ready
+
+## サービスアカウントキーをlightdashに登録
+
+以下の権限でサービスアカウントを作成。
+```shell
+roles/bigquery.dataViewer
+oles/bigquery.jobUser
+```
+
+サービスアカウントキーを作成してlightdashに登録します。
+
+See: https://docs.lightdash.com/get-started/setup-lightdash/connect-project#bigquery
+
+
+
+
 ## How to use this project in Lightdash 
 
 ### Install Lightdash:
