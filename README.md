@@ -10,8 +10,7 @@ gcloud auth application-default login
 ```sh
 python -m venv .venv
 source .venv/bin/activate.fish
-pip install -r requirements.txt
-pip install dbt-bigquery
+pip install dbt-core dbt-bigquery
 ```
 
 ## テンプレートからプロファイルをコピー
