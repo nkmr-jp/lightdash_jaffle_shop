@@ -1,3 +1,6 @@
+# lightdash_jaffle_shop
+lightdash/jaffle_shopをフォークして作成。`dbt-core` と`BigQuery` で動かすために各種設定を修正して、実行手順をまとめました。
+
 # dbt-coreとBigQueryで実行する手順
 
 gcloud auth でのログイン。 (CloudSDKのインストールがまだの場合は [こちら](https://cloud.google.com/sdk/docs/install-sdk?hl=ja) を参考に設定。)
