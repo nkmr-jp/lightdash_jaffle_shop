@@ -35,14 +35,13 @@ dbt docs serve
 <img width="2033" alt="image" src="https://github.com/user-attachments/assets/74fa37ac-ab40-4c10-8a47-9a081a1350de">
 
 
-## lightdashをRenderにdeploy
+## lightdashをlocalで起動
 
-[Render](https://render.com) のアカウントを作成してログイン。以下のボタンをクリックしてデプロイ。
-
-<div>
-<a href="https://render.com/deploy?repo=https://github.com/lightdash/lightdash-deploy-render">
-  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
-</a>
+```sh
+git clone https://github.com/lightdash/lightdash
+cd lightdash
+./scripts/install.sh
+```
 
 See: https://github.com/lightdash/lightdash
 
@@ -60,7 +59,7 @@ See: https://docs.lightdash.com/get-started/setup-lightdash/get-project-lightdas
 
 ## サービスアカウントキーをlightdashに登録
 
-以下の権限でサービスアカウントを作成。サービスアカウントキーを作成してlightdashに登録。
+以下の権限でサービスアカウントを作成して。サービスアカウントキーをlightdashに登録。
 
 ```shell
 roles/bigquery.dataViewer
